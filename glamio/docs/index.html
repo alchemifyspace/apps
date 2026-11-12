@@ -623,7 +623,7 @@ supabase --version</code></pre></div>
   <div class="callout warn"><strong class="title">Keep "Automatically expose new tables" ticked</strong>
     Supabase suggests unticking it, but Glamio's app and web admin need it: without it every screen fails with "permission denied". Your data stays protected, because Glamio switches on row-level security for every table and its tests check that no one can see another person's data.</div>
   <figure class="shot" data-file="images/03-supabase-new-project.png" data-caption="Supabase: the New project form. Name, generated password, region, and both Data API boxes ticked."></figure>
-  <figure class="shot" data-file="images/04-supabase-api-keys.png" data-caption="Supabase: Project Settings → API Keys, with the publishable key to copy."></figure>
+  <figure class="shot" data-file="images/04-supabase-api-keys.png" data-caption="Supabase: Project Settings → API Keys. Copy the publishable key (top). Never use the secret key (bottom)."></figure>
   <div class="callout stop"><strong class="title">Never share the "secret" or "service_role" key</strong>
     The same page also shows a <strong>secret</strong> key. Glamio never needs it in the app or the web admin. Anyone who has it can read and change everything in your database.</div>
 </section>
@@ -676,7 +676,7 @@ supabase --version</code></pre></div>
       </table></div></li>
     <li>Click <span class="ui">Save</span>.</li>
   </ol>
-  <figure class="shot" data-file="images/06-supabase-smtp.png" data-caption="Supabase: Authentication → SMTP Settings filled in for Resend."></figure>
+  <figure class="shot" data-file="images/06-supabase-smtp.png" data-caption="Supabase: Authentication → Emails → SMTP Settings. Switch on Enable custom SMTP, then fill in the fields from the table above."></figure>
 
   <h3>3c. Send Glamio's sign-in settings</h3>
   <p>This sends the code email design and the sign-in settings (code length, expiry) to your project. In the terminal, in the main Glamio folder:</p>
@@ -706,7 +706,7 @@ values ('00000000-0000-0000-0000-00000000b001', <strong>'owner@yoursalon.com'</s
       </ul></li>
     <li>In the Supabase dashboard open <span class="ui">SQL Editor</span> → <span class="ui">New query</span>. Copy <strong>the whole file</strong> into it and click <span class="ui">Run</span>. You should see <code>Success. No rows returned</code>.</li>
   </ol>
-  <figure class="shot" data-file="images/07-supabase-sql-editor.png" data-caption="Supabase SQL Editor after running setup.sql: Success. No rows returned."></figure>
+  <figure class="shot" data-file="images/07-supabase-sql-editor.png" data-caption="Supabase: SQL Editor → New. Paste the whole setup.sql, then click Run (top right). The Results area below shows Success. No rows returned."></figure>
   <div class="callout info"><strong class="title">Run it only once</strong>
     Running it a second time shows "duplicate key", which only means your business already exists. You can change the name, time zone and currency later in the web admin's <span class="ui">Settings</span>.</div>
 </section>
