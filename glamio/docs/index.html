@@ -572,7 +572,8 @@ supabase --version</code></pre></div>
     <li><strong>VS Code</strong></li>
   </ul>
   <p>A ✗ for "Chrome", "Visual Studio" or "Linux toolchain" is fine: Glamio doesn't use them.</p>
-  <figure class="shot" data-file="images/02-flutter-doctor.png" data-caption="A healthy flutter doctor: green ticks for Flutter, Android toolchain, Xcode (Mac) and VS Code."></figure>
+  <p>Two warnings you can ignore: on an <strong>Intel Mac</strong> Flutter shows a "!" saying it will need an Apple Silicon Mac in a future version (it still works today), and "Connected device" may complain about an iPhone on Wi-Fi. That only matters when you run on that iPhone (Step 8d).</p>
+  <figure class="shot" data-file="images/02-flutter-doctor.png" data-caption="flutter doctor on a Mac: ticks for the Android toolchain and Xcode. The two warnings shown (Intel Mac, iPhone on Wi-Fi) are fine."></figure>
 </section>
 
 <!-- ======================================================= -->
@@ -608,7 +609,8 @@ supabase --version</code></pre></div>
       <ul>
         <li><strong>Name:</strong> your salon's name, for example <em>Rosa Hair Studio</em>.</li>
         <li><strong>Database password:</strong> click <span class="ui">Generate a password</span> and <strong>save it in your notes</strong>. You need it in Step 2.</li>
-        <li><strong>Region:</strong> the one closest to your salon (shorter distance means a faster app).</li>
+        <li><strong>Region:</strong> <span class="ui">Auto</span> is fine, or click <span class="ui">Need a specific region?</span> and pick the one closest to your salon (shorter distance means a faster app).</li>
+        <li><strong>Security:</strong> leave <span class="ui">Enable Data API</span> and <span class="ui">Automatically expose new tables</span> <strong>ticked</strong>, as they are by default. <span class="ui">Enable automatic RLS</span> can stay as it is.</li>
       </ul></li>
     <li>Click <span class="ui">Create new project</span> and wait 1–2 minutes.</li>
     <li>Collect three things for your notes:
@@ -618,7 +620,9 @@ supabase --version</code></pre></div>
         <li><strong>Publishable key:</strong> <span class="ui">Project Settings → API Keys</span>. It starts with <code>sb_publishable_</code>. (Older projects call it the <code>anon</code> key; that one works too.)</li>
       </ul></li>
   </ol>
-  <figure class="shot" data-file="images/03-supabase-new-project.png" data-caption="Supabase: the New project form (name, database password, region)."></figure>
+  <div class="callout warn"><strong class="title">Keep "Automatically expose new tables" ticked</strong>
+    Supabase suggests unticking it, but Glamio's app and web admin need it: without it every screen fails with "permission denied". Your data stays protected, because Glamio switches on row-level security for every table and its tests check that no one can see another person's data.</div>
+  <figure class="shot" data-file="images/03-supabase-new-project.png" data-caption="Supabase: the New project form. Name, generated password, region, and both Data API boxes ticked."></figure>
   <figure class="shot" data-file="images/04-supabase-api-keys.png" data-caption="Supabase: Project Settings → API Keys, with the publishable key to copy."></figure>
   <div class="callout stop"><strong class="title">Never share the "secret" or "service_role" key</strong>
     The same page also shows a <strong>secret</strong> key. Glamio never needs it in the app or the web admin. Anyone who has it can read and change everything in your database.</div>
@@ -1158,6 +1162,9 @@ storeFile=/Users/you/upload-keystore.jks</code></pre></div>
 <section id="troubleshooting">
   <span class="kicker">Help</span>
   <h2>Troubleshooting</h2>
+
+  <h4>Every screen says "permission denied for table …"</h4>
+  <p>The project was created with <span class="ui">Automatically expose new tables</span> unticked (Step 1). The safe fix is a new Supabase project with that box ticked, then Steps 2–5 again (about 15 minutes). Don't try to fix it by granting access by hand: Glamio deliberately limits which columns people can change (for example, nobody can change their own role), and a broad grant would remove that protection.</p>
 
   <h4>The app shows "Setup needed — Missing keys"</h4>
   <p><code>mobile/.env</code> is missing or incomplete, or the app was started without it. Check the three required lines, and start with <code>flutter run --dart-define-from-file=.env</code> from inside the <code>mobile</code> folder.</p>
