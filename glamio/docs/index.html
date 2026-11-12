@@ -840,7 +840,6 @@ ADMIN_URL=https://rosa-hair.vercel.app     <span class="comment"># your web admi
 GOOGLE_SIGN_IN=false
 GOOGLE_WEB_CLIENT_ID=
 GOOGLE_IOS_CLIENT_ID=
-APPLE_SIGN_IN=false
 PUSH_ENABLED=false
 DEMO_MODE=false</code></pre></div>
   <p>Leave the other switches on <code>false</code> for now. You can turn on push and Google sign-in later (see <a href="#push">Push</a> and <a href="#google">Google sign-in</a>).</p>
@@ -1077,7 +1076,7 @@ $$);</code></pre></div>
 <section id="apple">
   <span class="kicker">Make it yours</span>
   <h2>Apple sign-in</h2>
-  <p><strong>Sign in with Apple is not included in this version.</strong> The <code>APPLE_SIGN_IN</code> switch in <code>.env</code> is there for a future version and has no effect yet.</p>
+  <p><strong>Sign in with Apple is not included in this version.</strong> Your clients sign in with an email code (all phones), or with Google on Android if you switch it on.</p>
   <div class="callout warn"><strong class="title">Google sign-in on iPhone needs Apple sign-in</strong>
     Apple's App Store rules say: if an iPhone app offers sign-in with Google (or another company), it must also offer Sign in with Apple or a similar private option. So for your <strong>iPhone</strong> build, keep <code>GOOGLE_SIGN_IN=false</code>. The email-code sign-in works for everyone. On Android you can turn Google sign-in on.</div>
   <p>Need Apple sign-in? We can add it as paid customization; see <a href="#support">Support</a>.</p>
