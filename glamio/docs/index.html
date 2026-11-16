@@ -287,6 +287,7 @@ figure.shot figcaption { font-size: 14px; color: var(--muted); margin-top: 8px; 
   <a class="nav" href="#glossary">Glossary (plain words)</a>
   <a class="nav" href="#support">Support &amp; customization</a>
   <a class="nav" href="#credits">Credits &amp; licences</a>
+  <a class="nav sub" href="#ai-use">Use of AI tools</a>
 </nav>
 
 <main id="content">
@@ -1147,6 +1148,7 @@ storeFile=/Users/you/upload-keystore.jks</code></pre></div>
     <li>In App Store Connect add screenshots, description, privacy policy link and the App Privacy answers, then <span class="ui">Submit for Review</span>. Give the reviewers a way to sign in (see the Android note above).</li>
   </ol>
   <div class="callout warn"><strong class="title">Remember</strong> Keep <code>GOOGLE_SIGN_IN=false</code> for the iPhone build (see <a href="#apple">Apple sign-in</a>).</div>
+  <div class="callout info"><strong class="title">Privacy manifest</strong> Apple asks every app what data it collects. Glamio already includes this file: <code>mobile/ios/Runner/PrivacyInfo.xcprivacy</code>. It lists name, email, phone, user id and the push-notification device id, all used only to run the app and never for tracking. Answer the App Privacy questions in App Store Connect the same way. If you add a feature that collects more data (for example location or analytics), add it to this file too.</div>
 </section>
 
 <section id="updates">
@@ -1285,6 +1287,14 @@ from public.notification_outbox order by id desc limit 10;</code></pre></div></l
     </tbody>
   </table></div>
   <p>Each package's full licence is in its own folder after <code>flutter pub get</code> / <code>npm install</code>. The photos in the online demo are <strong>not</strong> included in the download; add your own photos of your salon and work.</p>
+
+  <h3 id="ai-use">Use of AI tools</h3>
+  <p>AI tools were used to make this item:</p>
+  <ul>
+    <li><strong>Code and documentation:</strong> written with the help of an AI coding assistant (Claude by Anthropic). The author planned the app, reviewed the work and tested it on real Android phones and iPhones.</li>
+    <li><strong>Graphics</strong> (logo, app icon, screenshots and promo images): made with the help of AI tools and edited by the author.</li>
+  </ul>
+  <p>Every release passes automated checks: <code>flutter analyze</code> and Flutter tests, ESLint and TypeScript for the web admin, and database tests for security rules and bookings.</p>
   <p class="foot">Glamio documentation · version <span data-doc="version"></span> · updated <span data-doc="updated"></span> · by <a data-doc-href="website" target="_blank" rel="noopener"><span data-doc="author"></span></a> · <a data-doc-href="mailto:supportEmail"><span data-doc="supportEmail"></span></a></p>
 </section>
 
@@ -1298,8 +1308,8 @@ from public.notification_outbox order by id desc limit 10;</code></pre></div></l
    EDIT HERE: your details, shown throughout this page.
    ============================================================ */
 const DOC = {
-  version: '1.0.0',
-  updated: '13 Nov 2026',
+  version: '1.0.1',
+  updated: '16 Nov 2026',
   author: 'Alchemify',
   website: 'https://alchemify.space',
   supportEmail: 'support@alchemify.space',
